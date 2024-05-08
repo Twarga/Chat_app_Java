@@ -2,6 +2,7 @@ import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import javax.swing.*;
+import java.awt.Color;
 
 public class ChatClient extends UnicastRemoteObject implements Client {
     private ChatService chatService;
@@ -25,8 +26,8 @@ public class ChatClient extends UnicastRemoteObject implements Client {
     }
 
     @Override
-    public void receiveMessage(String message) throws RemoteException {
-        gui.receiveMessage(message);
+    public void receiveMessage(String message, String sender, java.awt.Color color) throws RemoteException {
+        gui.receiveMessage(message, sender, color);
     }
 
     public static void main(String[] args) {

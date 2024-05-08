@@ -2,6 +2,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.HashMap;
 import java.util.Map;
+import java.awt.Color;
 
 public class ChatServer extends UnicastRemoteObject implements ChatService {
     private Map<Client, String> clients;
@@ -13,7 +14,7 @@ public class ChatServer extends UnicastRemoteObject implements ChatService {
     @Override
     public synchronized void sendMessage(String message, String sender) throws RemoteException {
         for (Client client : clients.keySet()) {
-            client.receiveMessage(message);
+            client.receiveMessage(message, sender, Color.BLACK); // You can adjust the color as needed
         }
     }
 
